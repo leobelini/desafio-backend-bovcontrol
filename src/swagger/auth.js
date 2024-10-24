@@ -37,10 +37,6 @@
  *               properties:
  *                 token:
  *                   type: string
- *       400:
- *         description: Validation error
- *       500:
- *         description: Server error
  */
 
 /**
@@ -59,15 +55,15 @@
  *             schema:
  *               type: object
  *               properties:
- *                 user:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: string
- *                     name:
- *                       type: string
- *                     email:
- *                       type: string
+ *                 id:
+ *                   type: string
+ *                   example: 123456
+ *                 name:
+ *                   type: string
+ *                   example: John Doe
+ *                 email:
+ *                   type: string
+ *                   example: john.doe@example.com
  *       401:
  *         description: Unauthorized
  *       500:

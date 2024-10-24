@@ -4,7 +4,7 @@ const reportService = require('../services/reportService');
 const getMilkProduction = async (req) => {
   const milkProductions = await reportService.getMilkProduction(
     req.params.farm_id,
-    parseInt(req.query.month, 10),
+    parseInt(req.params.month, 10),
   );
   return handler.createResponse(milkProductions);
 };
@@ -12,7 +12,7 @@ const getMilkProduction = async (req) => {
 const getPaymentFarmerInMonth = async (req) => {
   const milkProductions = await reportService.getPaymentFarmerInMonth(
     req.params.farmer_id,
-    parseInt(req.query.month, 10),
+    parseInt(req.params.month, 10),
   );
   return handler.createResponse(milkProductions);
 };

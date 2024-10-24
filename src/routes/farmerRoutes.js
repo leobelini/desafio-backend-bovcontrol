@@ -4,8 +4,6 @@ const farmerController = require('../controllers/farmerController');
 const authenticateToken = require('../middlewares/auth/authenticate');
 const createFarmerMiddleware = require('../middlewares/farmer/createFarmerMiddleware');
 
-require('./farmerRoutesDefinitions');
-
 const router = express.Router();
 
 router.post(

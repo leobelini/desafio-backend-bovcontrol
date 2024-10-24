@@ -6,12 +6,10 @@ const milkProductionReportMiddleware = require('../middlewares/report/milkProduc
 const paymentFarmInYearReportMiddleware = require('../middlewares/report/paymentFarmInYearReportMiddleware');
 const paymentFarmerInMonthReportMiddleware = require('../middlewares/report/paymentFarmerInMonthReportMiddleware');
 
-require('./reportRoutesDefinitions');
-
 const router = express.Router();
 
 router.get(
-  '/reports/farms/:farm_id/milk-production',
+  '/reports/farms/:farm_id/milk-production/month/:month',
   authenticateToken,
   milkProductionReportMiddleware,
   reportController.getMilkProduction,
@@ -25,7 +23,7 @@ router.get(
 );
 
 router.get(
-  '/reports/farmers/:farmer_id/payment',
+  '/reports/farmers/:farmer_id/payment/month/:month',
   authenticateToken,
   paymentFarmerInMonthReportMiddleware,
   reportController.getPaymentFarmerInMonth,
