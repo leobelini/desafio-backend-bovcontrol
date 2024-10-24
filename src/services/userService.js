@@ -1,5 +1,5 @@
 const connectDB = require("../config/db");
-const { hash, compare } = require("../utils/hash");
+const { hash } = require("../utils/hash");
 const userRepository = require("../repositories/userRepository");
 
 const createUser = async (userData) => {
@@ -17,7 +17,8 @@ const createUser = async (userData) => {
 };
 
 const getUserById = async (userId) => {
-  throw new Error("NOT_IMPLEMENTED");
+  const db = await connectDB();
+  return await userRepository.getUserById(db, userId);
 };
 
 const getUserByEmail = async (email) => {

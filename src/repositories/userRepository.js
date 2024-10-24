@@ -1,3 +1,5 @@
+const { ObjectId } = require("mongodb");
+
 const COLLECTION_NAME = "users";
 
 /**
@@ -24,4 +26,19 @@ const getUserByEmail = async (db, email) => {
   return user;
 };
 
-module.exports = { createUser, getUserByEmail };
+/**
+ * @param {import('mongodb').Db} db
+ * @param {string} id
+ *
+ * @returns {Promise<import('mongodb').WithId<Object>>}
+ */
+const getUserById = async (db, id) => {
+  const objectId = new ObjectId(id);
+  const user = await db.collection(COLLECTION_NAME).findOne({
+    _id: objectId,
+  });
+
+  return user;
+};
+
+module.exports = { createUser, getUserByEmail, getUserById };

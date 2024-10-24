@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const connectDB = require("../config/db");
-const { hash, compare } = require("../utils/hash");
+const { compare } = require("../utils/hash");
 const userService = require("./userService");
 
 const createJwt = async (user) => {
@@ -33,11 +32,16 @@ const getUserForSingIn = async (email, password) => {
 };
 
 const getDataJwt = async (token) => {
-  const tokenChecked = jwt.verify(token, process.env.JWT_SECRET);
-  console.log({ tokenChecked });
-  if (!tokenChecked) throw new Error("TOKEN_IS_INVALID");
+  try {
+    const tokenChecked = jwt.verify(token, process.env.JWT_SECRET);
+    return tokenChecked;
+  } catch (error) {
+    if (error.name === "TokenExpiredError") {
+      throw new Error("TOKEN_IS_EXPIRED");
+    }
 
-  return tokenChecked;
+    throw new Error("TOKEN_IS_INVALID");
+  }
 };
 
 const getUserForJwt = async (tokenData) => {

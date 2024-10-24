@@ -18,7 +18,8 @@ const signIn = async (req, res) => {
 const me = async (req, res) => {
   try {
     const user = req.user;
-    return handler.createResponse({ user });
+    delete user.password;
+    return handler.createResponse(user);
   } catch (err) {
     next(err);
   }
