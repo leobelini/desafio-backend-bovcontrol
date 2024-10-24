@@ -1,20 +1,20 @@
-const express = require("express");
+const express = require('express');
 
-const farmerController = require("../controllers/farmerController");
-const authenticateToken = require("../middlewares/auth/authenticate");
-const createFarmerMiddleware = require("../middlewares/farmer/createFarmerMiddleware");
+const farmerController = require('../controllers/farmerController');
+const authenticateToken = require('../middlewares/auth/authenticate');
+const createFarmerMiddleware = require('../middlewares/farmer/createFarmerMiddleware');
 
-require("./farmerRoutesDefinitions");
+require('./farmerRoutesDefinitions');
 
 const router = express.Router();
 
 router.post(
-  "/farmers",
+  '/farmers',
   authenticateToken,
   createFarmerMiddleware,
-  farmerController.createFarmer
+  farmerController.createFarmer,
 );
 
-router.get("/farmers", authenticateToken, farmerController.getFarmers);
+router.get('/farmers', authenticateToken, farmerController.getFarmers);
 
 module.exports = router;

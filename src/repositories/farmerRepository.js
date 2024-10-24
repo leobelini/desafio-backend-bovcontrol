@@ -1,7 +1,6 @@
-const { ObjectId } = require("mongodb");
-const { toObjectId } = require("../utils/objectId");
+const { toObjectId } = require('../utils/objectId');
 
-const COLLECTION_NAME = "farmers";
+const COLLECTION_NAME = 'farmers';
 
 /**
  * @param {import('mongodb').Db} db
@@ -60,8 +59,10 @@ const addFarmInFarmer = async (db, farmerId, farmId, session) => {
     { $set: farmer },
     {
       session,
-    }
+    },
   );
 };
 
-module.exports = { createFarmer, getFarmerById, getFarmers, addFarmInFarmer };
+module.exports = {
+  createFarmer, getFarmerById, getFarmers, addFarmInFarmer,
+};

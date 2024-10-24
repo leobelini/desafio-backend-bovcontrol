@@ -1,4 +1,4 @@
-const clientDb = require("./clientDb");
+const clientDb = require('./clientDb');
 
 const connectDB = async () => {
   const client = await clientDb.clientDb();

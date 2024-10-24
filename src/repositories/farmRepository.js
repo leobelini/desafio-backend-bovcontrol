@@ -1,6 +1,6 @@
-const { toObjectId } = require("../utils/objectId");
+const { toObjectId } = require('../utils/objectId');
 
-const COLLECTION_NAME = "farms";
+const COLLECTION_NAME = 'farms';
 
 /**
  * @param {import('mongodb').Db} db

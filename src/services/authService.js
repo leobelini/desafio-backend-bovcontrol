@@ -1,7 +1,7 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
-const { compare } = require("../utils/hash");
-const userService = require("./userService");
+const { compare } = require('../utils/hash');
+const userService = require('./userService');
 
 const createJwt = async (user) => {
   const token = jwt.sign(
@@ -13,7 +13,7 @@ const createJwt = async (user) => {
     process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_EXPIRY,
-    }
+    },
   );
 
   return token;
@@ -21,10 +21,10 @@ const createJwt = async (user) => {
 
 const getUserForSingIn = async (email, password) => {
   const user = await userService.getUserByEmail(email);
-  if (!user) throw new Error("USER_NOT_FOUND");
+  if (!user) throw new Error('USER_NOT_FOUND');
 
   const passwordIsValid = await compare(password, user.password);
-  if (!passwordIsValid) throw new Error("USER_NOT_FOUND");
+  if (!passwordIsValid) throw new Error('USER_NOT_FOUND');
 
   delete user.password;
 
@@ -36,11 +36,11 @@ const getDataJwt = async (token) => {
     const tokenChecked = jwt.verify(token, process.env.JWT_SECRET);
     return tokenChecked;
   } catch (error) {
-    if (error.name === "TokenExpiredError") {
-      throw new Error("TOKEN_IS_EXPIRED");
+    if (error.name === 'TokenExpiredError') {
+      throw new Error('TOKEN_IS_EXPIRED');
     }
 
-    throw new Error("TOKEN_IS_INVALID");
+    throw new Error('TOKEN_IS_INVALID');
   }
 };
 

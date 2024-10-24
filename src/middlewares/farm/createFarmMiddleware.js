@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const bodySchema = Joi.object({
   name: Joi.string().required(),
@@ -11,7 +11,7 @@ const createFarmMiddleware = async (req, res, next) => {
   if (error) return next(error);
 
   req.body = value;
-  next();
+  return next();
 };
 
 module.exports = createFarmMiddleware;

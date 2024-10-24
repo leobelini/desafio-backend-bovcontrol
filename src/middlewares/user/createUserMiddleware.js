@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const bodySchema = Joi.object({
   name: Joi.string().required(),
@@ -10,7 +10,7 @@ const createUserMiddleware = async (req, res, next) => {
   const { error } = bodySchema.validate(req.body);
   if (error) return next(error);
 
-  next();
+  return next();
 };
 
 module.exports = createUserMiddleware;

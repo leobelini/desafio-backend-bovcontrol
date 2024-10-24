@@ -1,4 +1,4 @@
-const dayjs = require("dayjs");
+const dayjs = require('dayjs');
 
 const getSemester = (date) => {
   const month = dayjs(date).month();
@@ -6,10 +6,10 @@ const getSemester = (date) => {
 };
 
 const splitDate = (date) => {
-  const _date = dayjs(date);
-  const day = _date.date();
-  const month = _date.month();
-  const year = _date.year();
+  const internalDate = dayjs(date);
+  const day = internalDate.date();
+  const month = internalDate.month();
+  const year = internalDate.year();
   return { day, month: month + 1, year };
 };
 

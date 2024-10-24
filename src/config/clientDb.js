@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient } = require('mongodb');
 
 const DB_NAME = process.env.MONGO_DB_NAME;
 

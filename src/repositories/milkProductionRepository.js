@@ -1,6 +1,6 @@
-const { toObjectId } = require("../utils/objectId");
+const { toObjectId } = require('../utils/objectId');
 
-const COLLECTION_NAME = "milk-productions";
+const COLLECTION_NAME = 'milk-productions';
 
 /**
  * @param {import('mongodb').Db} db
@@ -88,7 +88,7 @@ const registerMilkProduction = async (db, milkProductionId, data) => {
     .updateOne(
       { _id: toObjectId(milkProductionId) },
       { $set: data },
-      { upsert: true }
+      { upsert: true },
     );
   return result;
 };

@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const bodySchema = Joi.object({
   farm_id: Joi.string().required(),
@@ -11,7 +11,7 @@ const createMilkProductionMiddleware = (req, res, next) => {
   if (error) return next(error);
 
   req.body = value;
-  next();
+  return next();
 };
 
 module.exports = createMilkProductionMiddleware;

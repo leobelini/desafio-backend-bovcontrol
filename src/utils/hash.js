@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 
 /**
  * @param {string} password
@@ -6,19 +6,15 @@ const bcrypt = require("bcrypt");
  * @returns {Promise<string>}
  *
  */
-const hash = async (password) => {
-  return await bcrypt.hash(password, 10);
-};
+const hash = async (password) => bcrypt.hash(password, 10);
 
 /**
  * @param {string} password
- * @param {string} hash
+ * @param {string} hashString
  *
  * @returns {Promise<boolean>}
  */
-const compare = async (password, hash) => {
-  return await bcrypt.compare(password, hash);
-};
+const compare = async (password, hashString) => bcrypt.compare(password, hashString);
 
 module.exports = {
   hash,

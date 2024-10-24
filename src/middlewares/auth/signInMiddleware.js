@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const bodySchema = Joi.object({
   email: Joi.string().email().required(),
@@ -9,7 +9,7 @@ const signInMiddleware = async (req, res, next) => {
   const { error } = bodySchema.validate(req.body);
   if (error) return next(error);
 
-  next();
+  return next();
 };
 
 module.exports = signInMiddleware;

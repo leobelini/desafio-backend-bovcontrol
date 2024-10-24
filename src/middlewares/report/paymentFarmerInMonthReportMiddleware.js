@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const paramsSchema = Joi.object({
   farmer_id: Joi.string().required(),
@@ -14,7 +14,7 @@ const milkProductionReportMiddleware = async (req, res, next) => {
 
   const { error: queryError } = querySchema.validate(req.query);
   if (queryError) return next(queryError);
-  next();
+  return next();
 };
 
 module.exports = milkProductionReportMiddleware;

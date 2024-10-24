@@ -1,5 +1,5 @@
-const handler = require("../utils/httpHandler");
-const farmerService = require("../services/farmerService");
+const handler = require('../utils/httpHandler');
+const farmerService = require('../services/farmerService');
 
 /**
  * @param {import('express').Request} req - Request object

@@ -1,5 +1,5 @@
-const handler = require("../utils/httpHandler");
-const authService = require("../services/authService");
+const handler = require('../utils/httpHandler');
+const authService = require('../services/authService');
 
 /**
  * @param {import('express').Request} req - Request object
@@ -18,7 +18,7 @@ const signIn = async (req) => {
  * @param {import('express').Request} req - Request object
  */
 const me = async (req) => {
-  const user = req.user;
+  const { user } = req;
   delete user.password;
   return handler.createResponse(user);
 };

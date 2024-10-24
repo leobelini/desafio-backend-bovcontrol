@@ -1,11 +1,9 @@
-const errorHandler = require("../middlewares/global/errorHandler");
+const errorHandler = require('../middlewares/global/errorHandler');
 
-const createResponse = (data, responseCode = 200) => {
-  return {
-    data,
-    responseCode,
-  };
-};
+const createResponse = (data, responseCode = 200) => ({
+  data,
+  responseCode,
+});
 
 /**
  * Checks if an object matches the expected HttpResponse structure.
@@ -13,15 +11,13 @@ const createResponse = (data, responseCode = 200) => {
  * @param {any} obj - The object to check.
  * @returns {boolean} - True if the object is a valid HttpResponse.
  */
-const isHttpResponse = (obj) => {
-  return (
-    obj &&
-    typeof obj === "object" &&
-    "data" in obj &&
-    "responseCode" in obj &&
-    typeof obj.responseCode === "number"
-  );
-};
+const isHttpResponse = (obj) => (
+  obj
+    && typeof obj === 'object'
+    && 'data' in obj
+    && 'responseCode' in obj
+    && typeof obj.responseCode === 'number'
+);
 
 /**
  * @param {Function} fn

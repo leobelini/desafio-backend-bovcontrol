@@ -1,25 +1,25 @@
-const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 const swaggerOptions = {
   definition: {
-    openapi: "3.0.0",
+    openapi: '3.0.0',
     info: {
-      title: "BovControl API",
-      version: "1.0.0",
-      description: "Desafio BovControl",
+      title: 'BovControl API',
+      version: '1.0.0',
+      description: 'Desafio BovControl',
     },
     servers: [
       {
-        url: "http://localhost:4000/api",
+        url: 'http://localhost:4000/api',
       },
     ],
     components: {
       securitySchemes: {
         bearerAuth: {
-          type: "http",
-          scheme: "bearer",
-          bearerFormat: "JWT", // Opcional, mas pode especificar JWT como o formato do token
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT', // Opcional, mas pode especificar JWT como o formato do token
         },
       },
     },
@@ -29,7 +29,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ["./src/routes/*.js"],
+  apis: ['./src/routes/*.js'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
