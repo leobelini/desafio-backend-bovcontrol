@@ -9,6 +9,7 @@ const errorHandler = require("./middlewares/global/errorHandler");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const farmerRoutes = require("./routes/farmerRoutes");
+const farmRoutes = require("./routes/farmRoutes");
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Rotas
-app.use("/api", userRoutes, farmerRoutes, authRoutes);
+app.use("/api", userRoutes, farmerRoutes, authRoutes, farmRoutes);
 
 // Middleware de tratamento de erros
 app.use(errorHandler);

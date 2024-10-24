@@ -6,6 +6,12 @@ const createFarmer = async (farmerData) => {
   return await farmerRepository.createFarmer(db, farmerData);
 };
 
+const getFarmers = async () => {
+  const db = await connectDB();
+  return await farmerRepository.getFarmers(db);
+};
+
 module.exports = {
   createFarmer,
+  getFarmers,
 };

@@ -3,10 +3,9 @@ const authService = require("../services/authService");
 
 /**
  * @param {import('express').Request} req - Request object
- * @param {import('express').Response} res - Response object
  */
 
-const signIn = async (req, res) => {
+const signIn = async (req) => {
   const { body } = req;
   const { email, password } = body;
 
@@ -15,14 +14,13 @@ const signIn = async (req, res) => {
   return handler.createResponse({ token: jwt });
 };
 
-const me = async (req, res) => {
-  try {
-    const user = req.user;
-    delete user.password;
-    return handler.createResponse(user);
-  } catch (err) {
-    next(err);
-  }
+/**
+ * @param {import('express').Request} req - Request object
+ */
+const me = async (req) => {
+  const user = req.user;
+  delete user.password;
+  return handler.createResponse(user);
 };
 
 module.exports = {

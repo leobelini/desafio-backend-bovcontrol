@@ -1,9 +1,9 @@
-const { MongoClient } = require("mongodb");
+const clientDb = require("./clientDb");
 
 const connectDB = async () => {
-  const client = new MongoClient(process.env.MONGO_URI);
-  await client.connect();
-  return client.db(process.env.MONGO_DB_NAME);
+  const client = await clientDb.clientDb();
+  const db = client.db(clientDb.DB_NAME);
+  return db;
 };
 
 module.exports = connectDB;

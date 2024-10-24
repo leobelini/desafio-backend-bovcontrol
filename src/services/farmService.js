@@ -1,0 +1,22 @@
+const connectDB = require("../config/db");
+const clientDb = require("../config/clientDb");
+const farmRepository = require("../repositories/farmRepository");
+const farmerRepository = require("../repositories/farmerRepository");
+
+const createFarm = async (farmData) => {
+  const db = await connectDB();
+  const farmer = await farmerRepository.getFarmerById(db, farmData.farmer_id);
+  if (!farmer) {
+    throw new Error("FARMER_NOT_FOUND");
+  }
+
+  farmData.farmer_id = farmer._id;
+
+  const result = await farmRepository.createFarm(db, farmData);
+
+  farmerRepository.addFarmInFarmer(db, farmer._id, result._id);
+
+  return result;
+};
+
+module.exports = { createFarm };

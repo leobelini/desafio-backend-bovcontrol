@@ -15,4 +15,6 @@ router.post(
   farmerController.createFarmer
 );
 
+router.get("/farmers", authenticateToken, farmerController.getFarmers);
+
 module.exports = router;

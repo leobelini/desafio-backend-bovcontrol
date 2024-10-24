@@ -1,3 +1,5 @@
+const { ObjectId } = require("mongodb");
+
 const COLLECTION_NAME = "farmers";
 
 /**
@@ -12,4 +14,53 @@ const createFarmer = async (db, farmer) => {
   return result.insertedId.toString();
 };
 
-module.exports = { createFarmer };
+/**
+ * @param {import('mongodb').Db} db
+ * @param {string} id
+ *
+ * @returns {Promise<import('mongodb').WithId<Object>>}
+ */
+const getFarmerById = async (db, id) => {
+  const objectId = new ObjectId(id);
+  const farmer = await db
+    .collection(COLLECTION_NAME)
+    .findOne({ _id: objectId });
+
+  return farmer;
+};
+
+/**
+ * @param {import('mongodb').Db} db
+ *
+ * @returns {Promise<import('mongodb').WithId<Object>[]>}
+ */
+const getFarmers = async (db) => {
+  const farmers = await db.collection(COLLECTION_NAME).find().toArray();
+
+  return farmers;
+};
+
+/**
+ * @param {import('mongodb').Db} db
+ * @param {string} farmerId
+ * @param {string} farmId
+ * @param {import('mongodb').ClientSession}
+ *
+ * @returns {Promise<void>}
+ */
+const addFarmInFarmer = async (db, farmerId, farmId, session) => {
+  const farmerIdObject = new ObjectId(farmerId);
+  const farmIdObject = new ObjectId(farmId);
+
+  const farmer = await getFarmerById(db, farmerIdObject);
+  farmer.farms = [...(farmer.farms || []), farmIdObject];
+  await db.collection(COLLECTION_NAME).updateOne(
+    { _id: farmerIdObject },
+    { $set: farmer },
+    {
+      session,
+    }
+  );
+};
+
+module.exports = { createFarmer, getFarmerById, getFarmers, addFarmInFarmer };
