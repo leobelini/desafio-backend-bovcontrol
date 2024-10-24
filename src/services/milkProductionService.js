@@ -69,6 +69,4 @@ const createMilkProduction = async (milkProductionData) => {
   );
 };
 
-
-
 module.exports = { createMilkProduction };

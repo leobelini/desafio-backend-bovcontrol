@@ -1,6 +1,7 @@
 const connectDB = require('../config/db');
 const utilsDate = require('../utils/date');
 const { formatPrice } = require('../utils/number');
+const farmRepository = require('../repositories/farmRepository');
 const { calculateMilkProduction } = require('../utils/production');
 const farmerRepository = require('../repositories/farmerRepository');
 const milkProductionRepository = require('../repositories/milkProductionRepository');
@@ -13,6 +14,9 @@ const milkProductionRepository = require('../repositories/milkProductionReposito
  * */
 const getMilkProduction = async (farmId, month) => {
   const db = await connectDB();
+
+  const farm = await farmRepository.getFarmById(db, farmId);
+  if (!farm) throw new Error('FARM_NOT_FOUND');
 
   const productions = await milkProductionRepository.getMilkProductionByFarmIdAndMonth(
     db,
@@ -82,7 +86,46 @@ const getPaymentFarmerInMonth = async (farmerId, month) => {
   return result;
 };
 
+const getPaymentFarmInYear = async (farmId, year) => {
+  const db = await connectDB();
+
+  const farm = await farmRepository.getFarmById(db, farmId);
+  if (!farm) throw new Error('FARM_NOT_FOUND');
+
+  const milkProductions = await milkProductionRepository.getMilkProductionByFarmIdAndYear(
+    db,
+    farmId,
+    year,
+  );
+
+  const result = milkProductions.reduce((acc, row) => {
+    const {
+      month, total_liters, total_distance, prices,
+    } = row;
+
+    const { price } = calculateMilkProduction(
+      month,
+      total_liters,
+      total_distance,
+      prices,
+    );
+
+    if (!acc[month]) {
+      acc[month] = {
+        pricePTBR: formatPrice(price, 'pt-BR', 'BRL'),
+        priceUSD: formatPrice(price, 'en-US', 'USD'),
+      };
+    }
+    return acc;
+
+  }, {});
+
+  return result;
+
+};
+
 module.exports = {
   getMilkProduction,
   getPaymentFarmerInMonth,
+  getPaymentFarmInYear,
 };
