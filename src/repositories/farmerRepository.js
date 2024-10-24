@@ -1,4 +1,5 @@
 const { ObjectId } = require("mongodb");
+const { toObjectId } = require("../utils/objectId");
 
 const COLLECTION_NAME = "farmers";
 
@@ -21,7 +22,7 @@ const createFarmer = async (db, farmer) => {
  * @returns {Promise<import('mongodb').WithId<Object>>}
  */
 const getFarmerById = async (db, id) => {
-  const objectId = new ObjectId(id);
+  const objectId = toObjectId(id);
   const farmer = await db
     .collection(COLLECTION_NAME)
     .findOne({ _id: objectId });
@@ -49,8 +50,8 @@ const getFarmers = async (db) => {
  * @returns {Promise<void>}
  */
 const addFarmInFarmer = async (db, farmerId, farmId, session) => {
-  const farmerIdObject = new ObjectId(farmerId);
-  const farmIdObject = new ObjectId(farmId);
+  const farmerIdObject = toObjectId(farmerId);
+  const farmIdObject = toObjectId(farmId);
 
   const farmer = await getFarmerById(db, farmerIdObject);
   farmer.farms = [...(farmer.farms || []), farmIdObject];

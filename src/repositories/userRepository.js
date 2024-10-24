@@ -1,4 +1,4 @@
-const { ObjectId } = require("mongodb");
+const { toObjectId } = require("../utils/objectId");
 
 const COLLECTION_NAME = "users";
 
@@ -33,7 +33,7 @@ const getUserByEmail = async (db, email) => {
  * @returns {Promise<import('mongodb').WithId<Object>>}
  */
 const getUserById = async (db, id) => {
-  const objectId = new ObjectId(id);
+  const objectId = toObjectId(id);
   const user = await db.collection(COLLECTION_NAME).findOne({
     _id: objectId,
   });

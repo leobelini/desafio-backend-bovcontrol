@@ -1,4 +1,4 @@
-const { ObjectId } = require("mongodb");
+const { toObjectId } = require("../utils/objectId");
 
 const COLLECTION_NAME = "milk-productions";
 
@@ -22,7 +22,7 @@ const createMilkProduction = async (db, milkProduction) => {
  * @returns {Promise<import('mongodb').WithId<Object>>}
  */
 const getMilkProductionByFarmIdAndDate = async (db, farmId, month, year) => {
-  const objectId = new ObjectId(farmId);
+  const objectId = toObjectId(farmId);
 
   const milkProductions = await db.collection(COLLECTION_NAME).findOne({
     farm_id: objectId,
@@ -41,7 +41,7 @@ const getMilkProductionByFarmIdAndDate = async (db, farmId, month, year) => {
  * @returns {Promise<import('mongodb').WithId<Object>[]>}
  */
 const getMilkProductionByFarmIdAndMonth = async (db, farmId, month) => {
-  const objectId = new ObjectId(farmId);
+  const objectId = toObjectId(farmId);
 
   const milkProductions = await db
     .collection(COLLECTION_NAME)
@@ -54,11 +54,39 @@ const getMilkProductionByFarmIdAndMonth = async (db, farmId, month) => {
   return milkProductions;
 };
 
+/**
+ * @param {import('mongodb').Db} db
+ * @param {string[]} farmsId
+ * @param {number} month
+ *
+ * @returns {Promise<import('mongodb').WithId<Object>[]>}
+ */
+const getMilkProductionByFarmsIdAndMonth = async (db, farmsId, month) => {
+  const listOfObjectId = farmsId.map((farmId) => toObjectId(farmId));
+
+  const milkProductions = await db
+    .collection(COLLECTION_NAME)
+    .find({
+      farm_id: { $in: listOfObjectId },
+      month,
+    })
+    .toArray();
+
+  return milkProductions;
+};
+
+/**
+ * @param {import('mongodb').Db} db
+ * @param {string} milkProductionId
+ * @param {Object} data
+ *
+ * @returns {Promise<import('mongodb').UpdateResult>}
+ */
 const registerMilkProduction = async (db, milkProductionId, data) => {
   const result = await db
     .collection(COLLECTION_NAME)
     .updateOne(
-      { _id: new ObjectId(milkProductionId) },
+      { _id: toObjectId(milkProductionId) },
       { $set: data },
       { upsert: true }
     );
@@ -70,4 +98,5 @@ module.exports = {
   getMilkProductionByFarmIdAndDate,
   registerMilkProduction,
   getMilkProductionByFarmIdAndMonth,
+  getMilkProductionByFarmsIdAndMonth,
 };

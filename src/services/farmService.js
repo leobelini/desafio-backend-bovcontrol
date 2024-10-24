@@ -13,7 +13,7 @@ const createFarm = async (farmData) => {
 
   const result = await farmRepository.createFarm(db, farmData);
 
-  farmerRepository.addFarmInFarmer(db, farmer._id, result._id);
+  farmerRepository.addFarmInFarmer(db, farmer._id, result);
 
   return result;
 };

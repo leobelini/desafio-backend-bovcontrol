@@ -1,4 +1,4 @@
-const { ObjectId } = require("mongodb");
+const { toObjectId } = require("../utils/objectId");
 
 const COLLECTION_NAME = "farms";
 
@@ -24,7 +24,7 @@ const createFarm = async (db, farm, session) => {
  * @returns {Promise<import('mongodb').WithId<Object>>}
  */
 const getFarmById = async (db, id) => {
-  const objectId = new ObjectId(id);
+  const objectId = toObjectId(id);
   const farm = await db.collection(COLLECTION_NAME).findOne({ _id: objectId });
 
   return farm;
