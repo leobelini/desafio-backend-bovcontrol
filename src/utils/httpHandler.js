@@ -33,7 +33,11 @@ const create = (fn) => async (req, res, next) => {
 
     if (isHttpResponse(result)) {
       // If result is a valid HttpResponse, send response with custom code
-      res.status(result.responseCode).json(result.data);
+      if (result.data) {
+        res.status(result.responseCode).json(result.data);
+      } else {
+        res.status(result.responseCode).json();
+      }
     } else {
       // If not, send a generic 200 response
       res.status(200).json(result);

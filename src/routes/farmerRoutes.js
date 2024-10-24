@@ -1,6 +1,6 @@
 const express = require("express");
 
-const userController = require("../controllers/userController");
+const farmerController = require("../controllers/farmerController");
 const authenticateToken = require("../middlewares/auth/authenticate");
 const createFarmerMiddleware = require("../middlewares/farmer/createFarmerMiddleware");
 
@@ -12,7 +12,7 @@ router.post(
   "/farmers",
   authenticateToken,
   createFarmerMiddleware,
-  userController.createUser
+  farmerController.createFarmer
 );
 
 module.exports = router;
