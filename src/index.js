@@ -10,6 +10,7 @@ const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const farmerRoutes = require("./routes/farmerRoutes");
 const farmRoutes = require("./routes/farmRoutes");
+const milkProductionRoutes = require("./routes/milkProductionRoutes");
 
 const app = express();
 
@@ -19,7 +20,14 @@ app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Rotas
-app.use("/api", userRoutes, farmerRoutes, authRoutes, farmRoutes);
+app.use(
+  "/api",
+  userRoutes,
+  farmerRoutes,
+  authRoutes,
+  farmRoutes,
+  milkProductionRoutes
+);
 
 // Middleware de tratamento de erros
 app.use(errorHandler);

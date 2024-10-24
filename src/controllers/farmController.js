@@ -3,11 +3,18 @@ const farmService = require("../services/farmService");
 
 /**
  * @param {import('express').Request} req - Request object
- * @param {import('express').Response} res - Response object
  */
-const createFarm = async (req, res) => {
+const createFarm = async (req) => {
   await farmService.createFarm(req.body);
   return handler.createResponse(null, 201);
 };
 
-module.exports = { createFarm: handler.create(createFarm) };
+const getFarms = async () => {
+  const farms = await farmService.getFarms();
+  return handler.createResponse(farms);
+};
+
+module.exports = {
+  createFarm: handler.create(createFarm),
+  getFarms: handler.create(getFarms),
+};

@@ -1,5 +1,4 @@
 const connectDB = require("../config/db");
-const clientDb = require("../config/clientDb");
 const farmRepository = require("../repositories/farmRepository");
 const farmerRepository = require("../repositories/farmerRepository");
 
@@ -19,4 +18,9 @@ const createFarm = async (farmData) => {
   return result;
 };
 
-module.exports = { createFarm };
+const getFarms = async () => {
+  const db = await connectDB();
+  return await farmRepository.listFarms(db);
+};
+
+module.exports = { createFarm, getFarms };

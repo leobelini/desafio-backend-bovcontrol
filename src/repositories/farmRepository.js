@@ -1,3 +1,5 @@
+const { ObjectId } = require("mongodb");
+
 const COLLECTION_NAME = "farms";
 
 /**
@@ -15,4 +17,23 @@ const createFarm = async (db, farm, session) => {
   return result.insertedId.toString();
 };
 
-module.exports = { createFarm };
+/**
+ * @param {import('mongodb').Db} db
+ * @param {string} id
+ *
+ * @returns {Promise<import('mongodb').WithId<Object>>}
+ */
+const getFarmById = async (db, id) => {
+  const objectId = new ObjectId(id);
+  const farm = await db.collection(COLLECTION_NAME).findOne({ _id: objectId });
+
+  return farm;
+};
+
+const listFarms = async (db) => {
+  const farms = await db.collection(COLLECTION_NAME).find().toArray();
+
+  return farms;
+};
+
+module.exports = { createFarm, getFarmById, listFarms };

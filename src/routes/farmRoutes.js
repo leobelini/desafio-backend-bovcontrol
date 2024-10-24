@@ -4,7 +4,7 @@ const farmController = require("../controllers/farmController");
 const authenticateToken = require("../middlewares/auth/authenticate");
 const createFarmMiddleware = require("../middlewares/farm/createFarmMiddleware");
 
-require("./farmRoutersDefinitions");
+require("./farmRoutesDefinitions");
 
 const router = express.Router();
 
@@ -14,5 +14,7 @@ router.post(
   createFarmMiddleware,
   farmController.createFarm
 );
+
+router.get("/farms", authenticateToken, farmController.getFarms);
 
 module.exports = router;
