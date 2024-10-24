@@ -7,13 +7,19 @@ const getSemester = (date) => {
 
 const splitDate = (date) => {
   const _date = dayjs(date);
-  const day = _date.day();
+  const day = _date.date();
   const month = _date.month();
   const year = _date.year();
   return { day, month: month + 1, year };
 };
 
+const getTotalDaysInMonth = (date) => {
+  const total = dayjs(date).daysInMonth();
+  return total;
+};
+
 module.exports = {
   getSemester,
   splitDate,
+  getTotalDaysInMonth,
 };

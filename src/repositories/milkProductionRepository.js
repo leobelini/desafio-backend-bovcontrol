@@ -33,6 +33,27 @@ const getMilkProductionByFarmIdAndDate = async (db, farmId, month, year) => {
   return milkProductions;
 };
 
+/**
+ * @param {import('mongodb').Db} db
+ * @param {string} farmId
+ * @param {number} month
+ *
+ * @returns {Promise<import('mongodb').WithId<Object>[]>}
+ */
+const getMilkProductionByFarmIdAndMonth = async (db, farmId, month) => {
+  const objectId = new ObjectId(farmId);
+
+  const milkProductions = await db
+    .collection(COLLECTION_NAME)
+    .find({
+      farm_id: objectId,
+      month,
+    })
+    .toArray();
+
+  return milkProductions;
+};
+
 const registerMilkProduction = async (db, milkProductionId, data) => {
   const result = await db
     .collection(COLLECTION_NAME)
@@ -48,4 +69,5 @@ module.exports = {
   createMilkProduction,
   getMilkProductionByFarmIdAndDate,
   registerMilkProduction,
+  getMilkProductionByFarmIdAndMonth,
 };
