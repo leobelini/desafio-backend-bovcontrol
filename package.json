@@ -6,6 +6,7 @@
     "start": "node src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "dev:seed": "cross-env NODE_ENV=development node src/seed/dev-start.js",
+    "seed": "node src/seed/dev-start.js",
     "test": "cross-env NODE_ENV=test mocha tests/**/*.test.js --exit",
     "test:watch": "cross-env NODE_ENV=test mocha --watch tests/**/*.test.js --exit",
     "test:coverage": "nyc --reporter=html --reporter=text npm run test",

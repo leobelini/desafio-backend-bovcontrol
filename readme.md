@@ -24,5 +24,30 @@ project/
 ## Fluxo da aplicação
 
 ```text
-Index -> Routes -> Controller -> Service -> Repository -> Model
+Index -> Routes -> Middleware -> Controller -> Service -> Repository -> Model
 ```
+
+
+
+## Executar
+
+### Configurar env
+`.env.example` disponível na pasta. Apenas criar um com base nele, `.env` para produção ou `.env.development` para dev
+
+### Produção
+
+- Instalar as dependencias: `npm install`
+- Executar: `npm run start`
+
+#### Seed
+
+Foi criado seed para testar o projeto `npm run seed`
+
+### Desenvolvimento
+
+- Instalar as dependencias: `npm install`
+- Executar: `npm run dev`
+
+#### Seed
+
+Foi criado seed para testar o projeto `npm run dev:seed`
