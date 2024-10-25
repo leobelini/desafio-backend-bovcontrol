@@ -1,4 +1,4 @@
-const { toObjectId } = require('../utils/objectId');
+import { toObjectId } from '../utils/objectId.js';
 
 const COLLECTION_NAME = 'farmers';
 
@@ -63,6 +63,6 @@ const addFarmInFarmer = async (db, farmerId, farmId, session) => {
   );
 };
 
-module.exports = {
+export default {
   createFarmer, getFarmerById, getFarmers, addFarmInFarmer,
 };

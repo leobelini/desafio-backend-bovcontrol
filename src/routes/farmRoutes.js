@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 
-const farmController = require('../controllers/farmController');
-const authenticateToken = require('../middlewares/auth/authenticate');
-const createFarmMiddleware = require('../middlewares/farm/createFarmMiddleware');
+import farmController from '../controllers/farmController.js';
+import authenticateToken from '../middlewares/auth/authenticate.js';
+import createFarmMiddleware from '../middlewares/farm/createFarmMiddleware.js';
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.post(
 
 router.get('/farms', authenticateToken, farmController.getFarms);
 
-module.exports = router;
+export default router;

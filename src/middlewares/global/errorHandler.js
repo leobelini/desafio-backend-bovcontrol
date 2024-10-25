@@ -26,4 +26,4 @@ function errorHandler(err, req, res, _) {
   return res.status(500).json(response);
 }
 
-module.exports = errorHandler;
+export { errorHandler };

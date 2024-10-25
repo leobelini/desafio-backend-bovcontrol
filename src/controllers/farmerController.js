@@ -1,20 +1,22 @@
-const handler = require('../utils/httpHandler');
-const farmerService = require('../services/farmerService');
+import farmerService from '../services/farmerService.js';
+import { createResponse, create } from '../utils/httpHandler.js';
 
 /**
  * @param {import('express').Request} req - Request object
  */
-const createFarmer = async (req) => {
+const createFarmerHandler = async (req) => {
   await farmerService.createFarmer(req.body);
-  return handler.createResponse(null, 201);
+  return createResponse(null, 201);
 };
 
-const getFarmers = async () => {
+const getFarmersHandler = async () => {
   const farmers = await farmerService.getFarmers();
-  return handler.createResponse(farmers);
+  return createResponse(farmers);
 };
 
-module.exports = {
-  createFarmer: handler.create(createFarmer),
-  getFarmers: handler.create(getFarmers),
+const farmerController = {
+  createFarmer:create(createFarmerHandler),
+  getFarmers:create(getFarmersHandler),
 };
+
+export default farmerController;

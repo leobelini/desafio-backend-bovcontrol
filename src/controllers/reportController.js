@@ -1,32 +1,34 @@
-const handler = require('../utils/httpHandler');
-const reportService = require('../services/reportService');
+import reportService from '../services/reportService.js';
+import { createResponse, create } from '../utils/httpHandler.js';
 
-const getMilkProduction = async (req) => {
+const getMilkProductionHandler = async (req) => {
   const milkProductions = await reportService.getMilkProduction(
     req.params.farmId,
     parseInt(req.params.month, 10),
   );
-  return handler.createResponse(milkProductions);
+  return createResponse(milkProductions);
 };
 
-const getPaymentFarmerInMonth = async (req) => {
+const getPaymentFarmerInMonthHandler = async (req) => {
   const milkProductions = await reportService.getPaymentFarmerInMonth(
     req.params.farmerId,
     parseInt(req.params.month, 10),
   );
-  return handler.createResponse(milkProductions);
+  return createResponse(milkProductions);
 };
 
-const getPaymentFarmInYear = async (req) => {
+const getPaymentFarmInYearHandler = async (req) => {
   const milkProductions = await reportService.getPaymentFarmInYear(
     req.params.farmId,
     parseInt(req.params.year, 10),
   );
-  return handler.createResponse(milkProductions);
+  return createResponse(milkProductions);
 };
 
-module.exports = {
-  getMilkProduction: handler.create(getMilkProduction),
-  getPaymentFarmerInMonth: handler.create(getPaymentFarmerInMonth),
-  getPaymentFarmInYear: handler.create(getPaymentFarmInYear),
+const reportController = {
+  getMilkProduction:create(getMilkProductionHandler),
+  getPaymentFarmerInMonth:create(getPaymentFarmerInMonthHandler),
+  getPaymentFarmInYear:create(getPaymentFarmInYearHandler),
 };
+
+export default reportController;

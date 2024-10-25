@@ -1,8 +1,8 @@
-const Joi = require('joi');
+import joi from 'joi';
 
-const bodySchema = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
+const bodySchema = joi.object({
+  email: joi.string().email().required(),
+  password: joi.string().required(),
 });
 
 const signInMiddleware = async (req, res, next) => {
@@ -12,4 +12,4 @@ const signInMiddleware = async (req, res, next) => {
   return next();
 };
 
-module.exports = signInMiddleware;
+export default signInMiddleware;

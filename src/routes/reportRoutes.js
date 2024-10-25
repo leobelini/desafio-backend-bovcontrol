@@ -1,10 +1,10 @@
-const express = require('express');
+import express from 'express';
 
-const reportController = require('../controllers/reportController');
-const authenticateToken = require('../middlewares/auth/authenticate');
-const milkProductionReportMiddleware = require('../middlewares/report/milkProductionReportMiddleware');
-const paymentFarmInYearReportMiddleware = require('../middlewares/report/paymentFarmInYearReportMiddleware');
-const paymentFarmerInMonthReportMiddleware = require('../middlewares/report/paymentFarmerInMonthReportMiddleware');
+import reportController from '../controllers/reportController.js';
+import authenticateToken from '../middlewares/auth/authenticate.js';
+import milkProductionReportMiddleware from '../middlewares/report/milkProductionReportMiddleware.js';
+import paymentFarmInYearReportMiddleware from '../middlewares/report/paymentFarmInYearReportMiddleware.js';
+import paymentFarmerInMonthReportMiddleware from '../middlewares/report/paymentFarmerInMonthReportMiddleware.js';
 
 const router = express.Router();
 
@@ -29,4 +29,5 @@ router.get(
   reportController.getPaymentFarmerInMonth,
 );
 
-module.exports = router;
+
+export default router;

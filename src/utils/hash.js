@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+import { hash as _hash, compare as _compare } from 'bcrypt';
 
 /**
  * @param {string} password
@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
  * @returns {Promise<string>}
  *
  */
-const hash = async (password) => bcrypt.hash(password, 10);
+const hash = async (password) => _hash(password, 10);
 
 /**
  * @param {string} password
@@ -14,9 +14,9 @@ const hash = async (password) => bcrypt.hash(password, 10);
  *
  * @returns {Promise<boolean>}
  */
-const compare = async (password, hashString) => bcrypt.compare(password, hashString);
+const compare = async (password, hashString) => _compare(password, hashString);
 
-module.exports = {
+export {
   hash,
   compare,
 };

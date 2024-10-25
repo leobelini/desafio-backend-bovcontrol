@@ -2,15 +2,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-await-in-loop */
-const { fakerPT_BR: faker } = require('@faker-js/faker');
+import { fakerPT_BR as faker } from '@faker-js/faker';
 
-require('../config/env');
+import '../config/env.js';
 
-const userService = require('../services/userService');
-const farmService = require('../services/farmService');
-const farmerService = require('../services/farmerService');
-const milkProductionService = require('../services/milkProductionService');
-const { getTotalDaysInMonth } = require('../utils/date');
+import userService from '../services/userService.js';
+import { getTotalDaysInMonth } from '../utils/date.js';
+import { createFarm } from '../services/farmService.js';
+import farmerService from '../services/farmerService.js';
+import milkProductionService from '../services/milkProductionService.js';
 
 const seedUser = async () => {
   try {
@@ -69,7 +69,7 @@ const seedFarm = async (farmerId) => {
         farmerId,
         distance: Math.floor(Math.random() * 300),
       };
-      const farmId = await farmService.createFarm(farmData);
+      const farmId = await createFarm(farmData);
 
       await seedMilkProduction(farmId);
     } catch (e) {

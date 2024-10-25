@@ -1,14 +1,16 @@
-const handler = require('../utils/httpHandler');
-const milkProductionService = require('../services/milkProductionService');
+import { createResponse, create } from '../utils/httpHandler.js';
+import milkProductionService  from '../services/milkProductionService.js';
 
 /**
  * @param {import('express').Request} req - Request object
  */
-const createMilkProduction = async (req) => {
+const createMilkProductionHandler = async (req) => {
   await milkProductionService.createMilkProduction(req.body);
-  return handler.createResponse(null, 201);
+  return createResponse(null, 201);
 };
 
-module.exports = {
-  createMilkProduction: handler.create(createMilkProduction),
-};
+const milkProductionController = {
+  createMilkProduction:create(createMilkProductionHandler),
+}
+
+export default milkProductionController

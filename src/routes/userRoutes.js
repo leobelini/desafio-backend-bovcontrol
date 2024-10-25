@@ -1,10 +1,10 @@
-const express = require('express');
+import express from 'express';
 
-const userController = require('../controllers/userController');
-const createUserMiddleware = require('../middlewares/user/createUserMiddleware');
+import userController from '../controllers/userController.js';
+import createUserMiddleware from '../middlewares/user/createUserMiddleware.js';
 
 const router = express.Router();
 
 router.post('/users', createUserMiddleware, userController.createUser);
 
-module.exports = router;
+export default router;

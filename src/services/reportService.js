@@ -1,10 +1,10 @@
-const connectDB = require('../config/db');
-const utilsDate = require('../utils/date');
-const { formatPrice } = require('../utils/number');
-const farmRepository = require('../repositories/farmRepository');
-const { calculateMilkProduction } = require('../utils/production');
-const farmerRepository = require('../repositories/farmerRepository');
-const milkProductionRepository = require('../repositories/milkProductionRepository');
+import connectDB from '../config/db.js';
+import { splitDate } from '../utils/date.js';
+import { formatPrice } from '../utils/number.js';
+import farmRepository from '../repositories/farmRepository.js';
+import { calculateMilkProduction } from '../utils/production.js';
+import farmerRepository from '../repositories/farmerRepository.js';
+import milkProductionRepository from '../repositories/milkProductionRepository.js';
 
 /**
  * @param {string} farmId
@@ -35,7 +35,7 @@ const getMilkProduction = async (farmId, month) => {
 
     items.forEach((item) => {
       const { date, liters } = item;
-      const { day } = utilsDate.splitDate(date);
+      const { day } = splitDate(date);
       result[year].productions.push({ day, liters });
     });
 
@@ -122,7 +122,7 @@ const getPaymentFarmInYear = async (farmId, year) => {
   return result;
 };
 
-module.exports = {
+export default {
   getMilkProduction,
   getPaymentFarmerInMonth,
   getPaymentFarmInYear,

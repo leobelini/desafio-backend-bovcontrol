@@ -1,29 +1,31 @@
-const handler = require('../utils/httpHandler');
-const authService = require('../services/authService');
+import { createResponse, create } from '../utils/httpHandler.js';
+import { getUserForSingIn, createJwt } from '../services/authService.js';
 
 /**
  * @param {import('express').Request} req - Request object
  */
 
-const signIn = async (req) => {
+const signInHandler = async (req) => {
   const { body } = req;
   const { email, password } = body;
 
-  const user = await authService.getUserForSingIn(email, password);
-  const jwt = await authService.createJwt(user);
-  return handler.createResponse({ token: jwt });
+  const user = await getUserForSingIn(email, password);
+  const jwt = await createJwt(user);
+  return createResponse({ token: jwt });
 };
 
 /**
  * @param {import('express').Request} req - Request object
  */
-const me = async (req) => {
+const meHandler = async (req) => {
   const { user } = req;
   delete user.password;
-  return handler.createResponse(user);
+  return createResponse(user);
 };
 
-module.exports = {
-  signIn: handler.create(signIn),
-  me: handler.create(me),
+const authController = {
+  signIn:create(signInHandler),
+  me:create(meHandler),
 };
+
+export default authController;

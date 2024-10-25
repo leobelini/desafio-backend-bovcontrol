@@ -1,6 +1,6 @@
-const connectDB = require('../config/db');
-const farmRepository = require('../repositories/farmRepository');
-const farmerRepository = require('../repositories/farmerRepository');
+import connectDB from '../config/db.js';
+import farmRepository from '../repositories/farmRepository.js';
+import farmerRepository from '../repositories/farmerRepository.js';
 
 const createFarm = async (farmData) => {
   const db = await connectDB();
@@ -24,4 +24,4 @@ const getFarms = async () => {
   return farmRepository.listFarms(db);
 };
 
-module.exports = { createFarm, getFarms };
+export { createFarm, getFarms };

@@ -1,4 +1,4 @@
-const { toObjectId } = require('../utils/objectId');
+import { toObjectId } from '../utils/objectId.js';
 
 const COLLECTION_NAME = 'users';
 
@@ -41,4 +41,4 @@ const getUserById = async (db, id) => {
   return user;
 };
 
-module.exports = { createUser, getUserByEmail, getUserById };
+export default { createUser, getUserByEmail, getUserById };

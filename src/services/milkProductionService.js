@@ -1,14 +1,14 @@
-const utilsDate = require('../utils/date');
-const connectDB = require('../config/db');
-const farmRepository = require('../repositories/farmRepository');
-const milkProductionRepository = require('../repositories/milkProductionRepository');
-const { getPricesByMonth } = require('../utils/production');
+import connectDB from '../config/db.js';
+import { splitDate } from '../utils/date.js';
+import { getPricesByMonth } from '../utils/production.js';
+import farmRepository from '../repositories/farmRepository.js';
+import milkProductionRepository from '../repositories/milkProductionRepository.js';
 
 const getMilkProduction = async (db, farmId, date) => {
   const farm = await farmRepository.getFarmById(db, farmId);
   if (!farm) throw new Error('FARM_NOT_FOUND');
 
-  const dateSplit = utilsDate.splitDate(date);
+  const dateSplit = splitDate(date);
   let milkProduction = await milkProductionRepository.getMilkProductionByFarmIdAndDate(
     db,
     farmId,
@@ -69,4 +69,4 @@ const createMilkProduction = async (milkProductionData) => {
   );
 };
 
-module.exports = { createMilkProduction };
+export default { createMilkProduction };

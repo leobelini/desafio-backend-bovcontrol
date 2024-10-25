@@ -1,7 +1,7 @@
-const Joi = require('joi');
+import joi from 'joi';
 
-const bodySchema = Joi.object({
-  name: Joi.string().required(),
+const bodySchema = joi.object({
+  name: joi.string().required(),
 });
 
 const createFarmerMiddleware = async (req, res, next) => {
@@ -11,4 +11,4 @@ const createFarmerMiddleware = async (req, res, next) => {
   return next();
 };
 
-module.exports = createFarmerMiddleware;
+export default createFarmerMiddleware;

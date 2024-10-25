@@ -1,9 +1,9 @@
-const Joi = require('joi');
+import joi from 'joi';
 
-const bodySchema = Joi.object({
-  farmId: Joi.string().required(),
-  liters: Joi.number().required(),
-  date: Joi.date().required(),
+const bodySchema = joi.object({
+  farmId: joi.string().required(),
+  liters: joi.number().required(),
+  date: joi.date().required(),
 });
 
 const createMilkProductionMiddleware = (req, res, next) => {
@@ -14,4 +14,4 @@ const createMilkProductionMiddleware = (req, res, next) => {
   return next();
 };
 
-module.exports = createMilkProductionMiddleware;
+export default createMilkProductionMiddleware;

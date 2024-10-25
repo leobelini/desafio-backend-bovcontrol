@@ -1,9 +1,9 @@
-const clientDb = require('./clientDb');
+import {DB_NAME, clientDb} from './clientDb.js';
 
 const connectDB = async () => {
-  const client = await clientDb.clientDb();
-  const db = client.db(clientDb.DB_NAME);
+  const client = await clientDb();
+  const db = client.db(DB_NAME);
   return db;
 };
 
-module.exports = connectDB;
+export default connectDB;

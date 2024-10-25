@@ -1,5 +1,5 @@
-const connectDB = require('../config/db');
-const farmerRepository = require('../repositories/farmerRepository');
+import connectDB from '../config/db.js';
+import farmerRepository from '../repositories/farmerRepository.js';
 
 const createFarmer = async (farmerData) => {
   const db = await connectDB();
@@ -11,7 +11,9 @@ const getFarmers = async () => {
   return farmerRepository.getFarmers(db);
 };
 
-module.exports = {
+const farmerService = {
   createFarmer,
   getFarmers,
 };
+
+export default farmerService;

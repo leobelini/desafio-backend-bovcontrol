@@ -1,6 +1,6 @@
-const connectDB = require('../config/db');
-const { hash } = require('../utils/hash');
-const userRepository = require('../repositories/userRepository');
+import connectDB from '../config/db.js';
+import { hash } from '../utils/hash.js';
+import userRepository from '../repositories/userRepository.js';
 
 const createUser = async (userData) => {
   const db = await connectDB();
@@ -27,4 +27,4 @@ const getUserByEmail = async (email) => {
   return userRepository.getUserByEmail(db, email);
 };
 
-module.exports = { createUser, getUserById, getUserByEmail };
+export default { createUser, getUserById, getUserByEmail };

@@ -1,17 +1,17 @@
-require('./config/env');
+import './config/env.js';
 
-const express = require('express');
+import express from 'express';
 
-const { swaggerDocs, swaggerUi } = require('./swagger');
-const errorHandler = require('./middlewares/global/errorHandler');
+import {swaggerDocs, swaggerUi} from './swagger.js';
+import {errorHandler} from './middlewares/global/errorHandler.js';
 
 // Routes
-const userRoutes = require('./routes/userRoutes');
-const authRoutes = require('./routes/authRoutes');
-const farmRoutes = require('./routes/farmRoutes');
-const farmerRoutes = require('./routes/farmerRoutes');
-const reportRoutes = require('./routes/reportRoutes');
-const milkProductionRoutes = require('./routes/milkProductionRoutes');
+import userRoutes from './routes/userRoutes.js';
+import authRoutes from './routes/authRoutes.js';
+import farmRoutes from './routes/farmRoutes.js';
+import farmerRoutes from './routes/farmerRoutes.js';
+import reportRoutes from './routes/reportRoutes.js';
+import milkProductionRoutes from './routes/milkProductionRoutes.js';
 
 const app = express();
 
@@ -20,7 +20,6 @@ app.use(express.json());
 // Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-// Rotas
 app.use(
   '/api',
   authRoutes,

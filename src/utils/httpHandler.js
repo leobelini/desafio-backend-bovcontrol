@@ -1,4 +1,4 @@
-const errorHandler = require('../middlewares/global/errorHandler');
+import {errorHandler} from '../middlewares/global/errorHandler.js';
 
 const createResponse = (data, responseCode = 200) => ({
   data,
@@ -43,4 +43,4 @@ const create = (fn) => async (req, res, next) => {
   }
 };
 
-module.exports = { create, createResponse };
+export { create, createResponse };

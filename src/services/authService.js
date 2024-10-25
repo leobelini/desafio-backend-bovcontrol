@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
-const { compare } = require('../utils/hash');
-const userService = require('./userService');
+import { compare } from '../utils/hash.js';
+import userService from './userService.js';
 
 const createJwt = async (user) => {
   const token = jwt.sign(
@@ -33,7 +33,7 @@ const getUserForSingIn = async (email, password) => {
 
 const getDataJwt = async (token) => {
   try {
-    const tokenChecked = jwt.verify(token, process.env.JWT_SECRET);
+    const tokenChecked =jwt.verify(token, process.env.JWT_SECRET);
     return tokenChecked;
   } catch (error) {
     if (error.name === 'TokenExpiredError') {
@@ -50,7 +50,7 @@ const getUserForJwt = async (tokenData) => {
   return user;
 };
 
-module.exports = {
+export {
   getUserForJwt,
   getDataJwt,
   getUserForSingIn,

@@ -12,6 +12,7 @@
     "fix:eslint": "eslint src --fix",
     "lint": "eslint src"
   },
+  "type": "module",
   "keywords": [],
   "author": "Léo Belini",
   "license": "ISC",

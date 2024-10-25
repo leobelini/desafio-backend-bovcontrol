@@ -1,8 +1,8 @@
-const Joi = require('joi');
+import joi from 'joi';
 
-const paramsSchema = Joi.object({
-  farmId: Joi.string().required(),
-  year: Joi.number().required(),
+const paramsSchema = joi.object({
+  farmId: joi.string().required(),
+  year: joi.number().required(),
 });
 
 const paymentFarmInYearReportMiddleware = async (req, res, next) => {
@@ -12,4 +12,4 @@ const paymentFarmInYearReportMiddleware = async (req, res, next) => {
   return next();
 };
 
-module.exports = paymentFarmInYearReportMiddleware;
+export default paymentFarmInYearReportMiddleware;

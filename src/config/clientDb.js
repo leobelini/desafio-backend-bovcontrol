@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+import { MongoClient } from 'mongodb';
 
 const DB_NAME = process.env.MONGO_DB_NAME;
 
@@ -8,4 +8,4 @@ const clientDb = async () => {
   return client;
 };
 
-module.exports = { clientDb, DB_NAME };
+export { clientDb, DB_NAME };

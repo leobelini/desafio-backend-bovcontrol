@@ -1,4 +1,4 @@
-const utilsDate = require('./date');
+import * as utilsDate from './date.js';
 
 const calculateMilkProduction = (month, liters, distance, prices) => {
   const {
@@ -44,7 +44,7 @@ const getPricesByMonth = (date) => {
   };
 };
 
-module.exports = {
+export {
   calculateMilkProduction,
   getPricesByMonth,
 };

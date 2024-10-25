@@ -1,9 +1,9 @@
-const Joi = require('joi');
+import joi from 'joi';
 
-const bodySchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().min(6).required(),
+const bodySchema = joi.object({
+  name: joi.string().required(),
+  email: joi.string().email().required(),
+  password: joi.string().min(6).required(),
 });
 
 const createUserMiddleware = async (req, res, next) => {
@@ -13,4 +13,4 @@ const createUserMiddleware = async (req, res, next) => {
   return next();
 };
 
-module.exports = createUserMiddleware;
+export default createUserMiddleware;

@@ -1,4 +1,4 @@
-const dayjs = require('dayjs');
+import dayjs from 'dayjs';
 
 const getSemester = (date) => {
   const month = dayjs(date).month();
@@ -18,7 +18,7 @@ const getTotalDaysInMonth = (date) => {
   return total;
 };
 
-module.exports = {
+export {
   getSemester,
   splitDate,
   getTotalDaysInMonth,

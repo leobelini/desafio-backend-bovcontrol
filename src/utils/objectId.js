@@ -1,4 +1,4 @@
-const { ObjectId } = require('mongodb');
+import { ObjectId } from 'mongodb';
 
 const toObjectId = (id) => {
   if (id instanceof ObjectId) {
@@ -10,4 +10,4 @@ const toObjectId = (id) => {
   throw new Error('ID_NOT_VALID');
 };
 
-module.exports = { toObjectId };
+export { toObjectId };

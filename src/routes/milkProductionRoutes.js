@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 
-const authenticateToken = require('../middlewares/auth/authenticate');
-const milkProductionController = require('../controllers/milkProductionController');
-const createMilkProductionMiddleware = require('../middlewares/milkProduction/createMilkProductionMiddleware');
+import authenticateToken from '../middlewares/auth/authenticate.js';
+import milkProductionController from '../controllers/milkProductionController.js';
+import createMilkProductionMiddleware from '../middlewares/milkProduction/createMilkProductionMiddleware.js';
 
 const router = express.Router();
 
@@ -13,4 +13,4 @@ router.post(
   milkProductionController.createMilkProduction,
 );
 
-module.exports = router;
+export default router;

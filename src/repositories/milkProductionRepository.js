@@ -1,4 +1,4 @@
-const { toObjectId } = require('../utils/objectId');
+import { toObjectId } from '../utils/objectId.js';
 
 const COLLECTION_NAME = 'milk-productions';
 
@@ -107,7 +107,7 @@ const registerMilkProduction = async (db, milkProductionId, data) => {
   return result;
 };
 
-module.exports = {
+export default {
   createMilkProduction,
   getMilkProductionByFarmIdAndDate,
   registerMilkProduction,
