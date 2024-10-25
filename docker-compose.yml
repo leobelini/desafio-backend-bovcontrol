@@ -1,0 +1,41 @@
+version: '3.3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"  
+    environment:
+      - NODE_ENV=production
+      - MONGO_DB_NAME=bovcontrol
+      - JWT_EXPIRY=60m
+      - JWT_SECRET=6751b6218da447b7ff89f6d970349f2ae6f3d20c4e322a29f76cc00470d1d027
+      - PORT=3000
+      - MONGO_URI=mongodb://bovUser:bovPassword@mongo:27017/admin?retryWrites=true&loadBalanced=false&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    networks:
+      - desafiobovcontrol
+
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: bovUser
+      MONGO_INITDB_ROOT_PASSWORD: bovPassword
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db  
+    networks:
+      - desafiobovcontrol
+
+networks:
+  desafiobovcontrol:
+    driver: bridge
+    
+volumes:
+  mongo_data:
