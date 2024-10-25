@@ -13,9 +13,9 @@
     "lint": "eslint src"
   },
   "keywords": [],
-  "author": "",
+  "author": "Léo Belini",
   "license": "ISC",
-  "description": "",
+  "description": "Desafio BovControl",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "chai": "^4.3.4",
@@ -35,9 +35,6 @@
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.31.0",
-    "mocha": "^10.7.3",
-    "nodemon": "^3.1.7",
-    "nyc": "^17.1.0",
-    "supertest": "^7.0.0"
+    "nodemon": "^3.1.7"
   }
 }
