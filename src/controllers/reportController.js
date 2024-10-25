@@ -26,9 +26,9 @@ const getPaymentFarmInYearHandler = async (req) => {
 };
 
 const reportController = {
-  getMilkProduction:create(getMilkProductionHandler),
-  getPaymentFarmerInMonth:create(getPaymentFarmerInMonthHandler),
-  getPaymentFarmInYear:create(getPaymentFarmInYearHandler),
+  getMilkProduction: create(getMilkProductionHandler),
+  getPaymentFarmerInMonth: create(getPaymentFarmerInMonthHandler),
+  getPaymentFarmInYear: create(getPaymentFarmInYearHandler),
 };
 
 export default reportController;

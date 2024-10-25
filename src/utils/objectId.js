@@ -10,4 +10,4 @@ const toObjectId = (id) => {
   throw new Error('ID_NOT_VALID');
 };
 
-export { toObjectId };
+export default toObjectId;

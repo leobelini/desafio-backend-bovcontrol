@@ -3,4 +3,4 @@ const formatPrice = (value, locale, currency) => Intl.NumberFormat(locale, {
   currency,
 }).format(value);
 
-export { formatPrice };
+export default formatPrice;

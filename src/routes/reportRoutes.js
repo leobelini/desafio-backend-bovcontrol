@@ -29,5 +29,4 @@ router.get(
   reportController.getPaymentFarmerInMonth,
 );
 
-
 export default router;

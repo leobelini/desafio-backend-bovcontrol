@@ -1,4 +1,4 @@
-import {DB_NAME, clientDb} from './clientDb.js';
+import { DB_NAME, clientDb } from './clientDb.js';
 
 const connectDB = async () => {
   const client = await clientDb();

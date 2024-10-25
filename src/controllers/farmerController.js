@@ -15,8 +15,8 @@ const getFarmersHandler = async () => {
 };
 
 const farmerController = {
-  createFarmer:create(createFarmerHandler),
-  getFarmers:create(getFarmersHandler),
+  createFarmer: create(createFarmerHandler),
+  getFarmers: create(getFarmersHandler),
 };
 
 export default farmerController;

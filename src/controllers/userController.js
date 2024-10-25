@@ -1,4 +1,4 @@
-import userService  from '../services/userService.js';
+import userService from '../services/userService.js';
 import { createResponse, create } from '../utils/httpHandler.js';
 
 /**

@@ -1,4 +1,4 @@
-import { toObjectId } from '../utils/objectId.js';
+import toObjectId from '../utils/objectId.js';
 
 const COLLECTION_NAME = 'milk-productions';
 

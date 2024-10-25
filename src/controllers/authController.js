@@ -24,8 +24,8 @@ const meHandler = async (req) => {
 };
 
 const authController = {
-  signIn:create(signInHandler),
-  me:create(meHandler),
+  signIn: create(signInHandler),
+  me: create(meHandler),
 };
 
 export default authController;

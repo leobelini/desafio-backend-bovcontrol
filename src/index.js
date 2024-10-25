@@ -2,8 +2,8 @@ import './config/env.js';
 
 import express from 'express';
 
-import {swaggerDocs, swaggerUi} from './swagger.js';
-import {errorHandler} from './middlewares/global/errorHandler.js';
+import { swaggerDocs, swaggerUi } from './swagger.js';
+import errorHandler from './middlewares/global/errorHandler.js';
 
 // Routes
 import userRoutes from './routes/userRoutes.js';

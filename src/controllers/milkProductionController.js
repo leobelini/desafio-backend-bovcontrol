@@ -1,5 +1,5 @@
 import { createResponse, create } from '../utils/httpHandler.js';
-import milkProductionService  from '../services/milkProductionService.js';
+import milkProductionService from '../services/milkProductionService.js';
 
 /**
  * @param {import('express').Request} req - Request object
@@ -10,7 +10,7 @@ const createMilkProductionHandler = async (req) => {
 };
 
 const milkProductionController = {
-  createMilkProduction:create(createMilkProductionHandler),
-}
+  createMilkProduction: create(createMilkProductionHandler),
+};
 
-export default milkProductionController
+export default milkProductionController;

@@ -1,6 +1,6 @@
 import connectDB from '../config/db.js';
 import { splitDate } from '../utils/date.js';
-import { formatPrice } from '../utils/number.js';
+import formatPrice from '../utils/number.js';
 import farmRepository from '../repositories/farmRepository.js';
 import { calculateMilkProduction } from '../utils/production.js';
 import farmerRepository from '../repositories/farmerRepository.js';

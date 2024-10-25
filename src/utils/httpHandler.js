@@ -1,4 +1,4 @@
-import {errorHandler} from '../middlewares/global/errorHandler.js';
+import errorHandler from '../middlewares/global/errorHandler.js';
 
 const createResponse = (data, responseCode = 200) => ({
   data,

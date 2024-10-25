@@ -33,7 +33,7 @@ const getUserForSingIn = async (email, password) => {
 
 const getDataJwt = async (token) => {
   try {
-    const tokenChecked =jwt.verify(token, process.env.JWT_SECRET);
+    const tokenChecked = jwt.verify(token, process.env.JWT_SECRET);
     return tokenChecked;
   } catch (error) {
     if (error.name === 'TokenExpiredError') {

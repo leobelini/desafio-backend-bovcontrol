@@ -1,4 +1,4 @@
-import {errorHandler} from '../global/errorHandler.js';
+import errorHandler from '../global/errorHandler.js';
 import { getDataJwt, getUserForJwt } from '../../services/authService.js';
 
 const authenticateToken = async (req, res, next) => {
