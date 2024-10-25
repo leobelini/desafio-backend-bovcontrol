@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const bodySchema = Joi.object({
-  farm_id: Joi.string().required(),
+  farmId: Joi.string().required(),
   liters: Joi.number().required(),
   date: Joi.date().required(),
 });

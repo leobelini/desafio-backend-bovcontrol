@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const bodySchema = Joi.object({
   name: Joi.string().required(),
-  farmer_id: Joi.string().required(),
+  farmerId: Joi.string().required(),
   distance: Joi.number().required(),
 });
 

@@ -27,10 +27,10 @@
  *                   liters:
  *                     type: number
  *                     example: 100
- *             total_liters:
+ *             totalLiters:
  *               type: number
  *               example: 100
- *             daily_average:
+ *             dailyAverage:
  *               type: number
  *               example: 100
  */
@@ -75,12 +75,12 @@
 
 /**
  * @swagger
- * /reports/farms/:farm_id/milk-production/month/:month:
+ * /reports/farms/:farmId/milk-production/month/:month:
  *   get:
  *     tags: [Reports]
  *     summary: Get milk production report
  *     parameters:
- *       - name: farm_id
+ *       - name: farmId
  *         in: path
  *         required: true
  *         schema:
@@ -103,12 +103,12 @@
 
 /**
  * @swagger
- * /reports/farms/:farm_id/milk-payment/year/:year:
+ * /reports/farms/:farmId/milk-payment/year/:year:
  *   get:
  *     tags: [Reports]
  *     summary: Get milk payment report
  *     parameters:
- *       - name: farm_id
+ *       - name: farmId
  *         in: path
  *         required: true
  *         schema:
@@ -131,12 +131,12 @@
 
 /**
  * @swagger
- * /reports/farmers/:farmer_id/payment/month/:month:
+ * /reports/farmers/:farmerId/payment/month/:month:
  *   get:
  *     tags: [Reports]
  *     summary: Get farmer payment report
  *     parameters:
- *       - name: farmer_id
+ *       - name: farmerId
  *         in: path
  *         required: true
  *         schema:

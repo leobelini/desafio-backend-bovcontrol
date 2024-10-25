@@ -21,7 +21,7 @@
  *         distance:
  *           type: number
  *           description: The distance of the farm in kilometers
- *         farmer_id:
+ *         farmerId:
  *           type: string
  *           description: The unique identifier of the farmer
  */
@@ -45,13 +45,13 @@
  *               distance:
  *                 type: number
  *                 example: 10
- *               farmer_id:
+ *               farmerId:
  *                 type: string
  *                 example: 123456
  *             required:
  *               - name
  *               - distance
- *               - farmer_id
+ *               - farmerId
  *     responses:
  *       201:
  *         description: Farm created

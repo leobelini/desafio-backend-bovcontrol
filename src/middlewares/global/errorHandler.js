@@ -7,7 +7,8 @@
  *
  * @returns {void} Sends a JSON response with the error message.
  */
-function errorHandler(err, req, res) {
+// eslint-disable-next-line no-unused-vars
+function errorHandler(err, req, res, _) {
   let response = {};
   if (process.env.NODE_ENV !== 'production') {
     response = {

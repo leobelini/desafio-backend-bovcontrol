@@ -50,8 +50,6 @@ const getUserForJwt = async (tokenData) => {
   return user;
 };
 
-const refreshJwt = async () => {};
-
 module.exports = {
   getUserForJwt,
   getDataJwt,

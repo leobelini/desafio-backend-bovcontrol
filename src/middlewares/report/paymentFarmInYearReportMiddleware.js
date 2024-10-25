@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const paramsSchema = Joi.object({
-  farm_id: Joi.string().required(),
+  farmId: Joi.string().required(),
   year: Joi.number().required(),
 });
 

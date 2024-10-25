@@ -25,7 +25,7 @@ const getMilkProductionByFarmIdAndDate = async (db, farmId, month, year) => {
   const objectId = toObjectId(farmId);
 
   const milkProductions = await db.collection(COLLECTION_NAME).findOne({
-    farm_id: objectId,
+    farmId: objectId,
     month,
     year,
   });
@@ -46,7 +46,7 @@ const getMilkProductionByFarmIdAndMonth = async (db, farmId, month) => {
   const milkProductions = await db
     .collection(COLLECTION_NAME)
     .find({
-      farm_id: objectId,
+      farmId: objectId,
       month,
     })
     .toArray();
@@ -67,7 +67,7 @@ const getMilkProductionByFarmsIdAndMonth = async (db, farmsId, month) => {
   const milkProductions = await db
     .collection(COLLECTION_NAME)
     .find({
-      farm_id: { $in: listOfObjectId },
+      farmId: { $in: listOfObjectId },
       month,
     })
     .toArray();
@@ -81,7 +81,7 @@ const getMilkProductionByFarmIdAndYear = async (db, farmId, year) => {
   const milkProductions = await db
     .collection(COLLECTION_NAME)
     .find({
-      farm_id: objectId,
+      farmId: objectId,
       year,
     })
     .toArray();

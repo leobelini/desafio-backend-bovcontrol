@@ -18,7 +18,7 @@
  *           schema:
  *             type: object
  *             properties:
- *               farm_id:
+ *               farmId:
  *                 type: string
  *                 example: 123456
  *               liters:
@@ -28,7 +28,7 @@
  *                 type: string
  *                 example: 2022-01-01T00:00:00.000Z
  *             required:
- *               - farm_id
+ *               - farmId
  *               - liters
  *               - date
  *     responses:

@@ -10,5 +10,3 @@ if (env === 'development') {
 } else {
   dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 }
-
-console.log('Using env:', env);

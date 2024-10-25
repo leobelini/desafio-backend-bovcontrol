@@ -27,10 +27,10 @@ const getMilkProduction = async (farmId, month) => {
   const result = {};
 
   productions.forEach((production) => {
-    const { year, total_liters, productions: items } = production;
+    const { year, totalLiters, productions: items } = production;
 
     if (!result[year]) {
-      result[year] = { productions: [], total_liters, daily_average: 0 };
+      result[year] = { productions: [], totalLiters, dailyAverage: 0 };
     }
 
     items.forEach((item) => {
@@ -39,7 +39,7 @@ const getMilkProduction = async (farmId, month) => {
       result[year].productions.push({ day, liters });
     });
 
-    result[year].daily_average = total_liters / (items || []).length;
+    result[year].dailyAverage = totalLiters / (items || []).length;
   });
 
   return result;
@@ -65,12 +65,12 @@ const getPaymentFarmerInMonth = async (farmerId, month) => {
 
   const result = milkProductions.reduce((acc, row) => {
     const {
-      year, month, total_liters, total_distance, prices,
+      year, month: milkProductionMonth, totalLiters, totalDistance, prices,
     } = row;
     const { price } = calculateMilkProduction(
-      month,
-      total_liters,
-      total_distance,
+      milkProductionMonth,
+      totalLiters,
+      totalDistance,
       prices,
     );
 
@@ -100,13 +100,13 @@ const getPaymentFarmInYear = async (farmId, year) => {
 
   const result = milkProductions.reduce((acc, row) => {
     const {
-      month, total_liters, total_distance, prices,
+      month, totalLiters, totalDistance, prices,
     } = row;
 
     const { price } = calculateMilkProduction(
       month,
-      total_liters,
-      total_distance,
+      totalLiters,
+      totalDistance,
       prices,
     );
 
@@ -117,11 +117,9 @@ const getPaymentFarmInYear = async (farmId, year) => {
       };
     }
     return acc;
-
   }, {});
 
   return result;
-
 };
 
 module.exports = {

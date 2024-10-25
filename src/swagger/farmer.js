@@ -42,12 +42,12 @@
  *                 type: string
  *               distance:
  *                 type: string
- *               farmer_id:
+ *               farmerId:
  *                 type: string
  *             required:
  *               - name
  *               - distance
- *               - farmer_id
+ *               - farmerId
  *     responses:
  *       201:
  *         description: Farmer successfully created

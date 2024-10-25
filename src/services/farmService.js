@@ -4,13 +4,13 @@ const farmerRepository = require('../repositories/farmerRepository');
 
 const createFarm = async (farmData) => {
   const db = await connectDB();
-  const farmer = await farmerRepository.getFarmerById(db, farmData.farmer_id);
+  const farmer = await farmerRepository.getFarmerById(db, farmData.farmerId);
   if (!farmer) {
     throw new Error('FARMER_NOT_FOUND');
   }
 
   const newFarmData = { ...farmData };
-  newFarmData.farmer_id = farmer._id;
+  newFarmData.farmerId = farmer._id;
 
   const result = await farmRepository.createFarm(db, newFarmData);
 
